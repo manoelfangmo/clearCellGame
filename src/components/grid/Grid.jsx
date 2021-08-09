@@ -4,10 +4,14 @@ import {useState, useEffect} from "react"
 import Modal from "../modal/Modal"
 
 export default function Grid() {
-    const [isOpen, setIsOpen] = useState(true)
-    const [length, setLength] = useState(10);
-    const [width, setWidth] = useState(3);
-    const numOfCells = length * width;
+
+    const [state, setState] = useState({isOpen: true, length: 10, width: 5, startGame: false});
+    const configGrid = (newLength, newWidth) => {
+        setState((prevState) =>({...prevState, length: Number(newLength)}));
+        setState((prevState) =>({...prevState, width: Number(newWidth)}));
+        
+    }
+    const numOfCells = state.length * state.width;
     const cells = [];
     for (let i = 0; i < numOfCells; i++){
         cells.push({className: "cell" , id: "cell"+i})
@@ -17,37 +21,34 @@ export default function Grid() {
         gridTemplateColumns: " ",
         gridTemplateRows: " "
     }
-    for (let i=0; i< length; i++){
+    for (let i=0; i< state.length; i++){
         gridStyle.gridTemplateRows += "7% "
     }
-    for (let i=0; i< width; i++){
+    for (let i=0; i< state.width; i++){
         gridStyle.gridTemplateColumns += "7% "
     }
     
     const colors = [ "blue", "red", "yellow", "green"];
 
-    const [start, setStart] = useState(false)
     useEffect(() => {
-        if(start){
-            console.log(length)
-            console.log(width)
+        if(state.startGame){
+            
             colorRow(0)
-            copyColors(5)
+            copyColors(3)
         }
         
     },)
 
     const colorRow = (startIndex) => {
-        for(let i = startIndex; i<width; i++){
+        for(let i = startIndex; i<state.width; i++){
             const colorIndex = Math.floor((Math.random() * colors.length));
             document.getElementById("cell"+i).style.backgroundColor = colors[colorIndex]; 
         }
     }
     const copyColors = (startIndex) => {
-        for(let i = startIndex; i<(startIndex + width); i++){
-            console.log(width)
+        for(let i = startIndex; i<(startIndex + state.width); i++){
             document.getElementById("cell"+i).style.backgroundColor = 
-            document.getElementById("cell"+(i-width)).style.backgroundColor;
+            document.getElementById("cell"+(i-state.width)).style.backgroundColor;
 
         }
     }
@@ -71,10 +72,10 @@ export default function Grid() {
                  ))}
 
             </div>
-            <button onClick={()=> setIsOpen(true)} className="settings">Game Settings</button>
-            <button onClick={()=> setStart(true)}className="start">Start Game</button>
-            <Modal open={isOpen} onClose={()=> setIsOpen(false)} length={length} 
-            setLength={setLength} width={width} setWidth={setWidth}  />
+            <button onClick={()=> setState((prevState) =>({...prevState, isOpen: true}))} className="settings">Game Settings</button>
+            <button onClick={()=> setState((prevState) =>({...prevState, startGame: true}))}className="start">Start Game</button>
+            <Modal open={state.isOpen} onClose={()=> setState((prevState) =>({...prevState, isOpen: false}))} length={state.length} 
+             width={state.width} configGrid={configGrid}  />
         </>
             
 

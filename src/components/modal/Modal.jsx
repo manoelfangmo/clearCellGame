@@ -1,9 +1,12 @@
 import React from 'react'
 import "./modal.scss"
 import ReactDom from 'react-dom'
-export default function Modal({open, onClose, width, setWidth, length, setLength}) {
+import {useState} from "react"
+export default function Modal({open, onClose, width, length, configGrid}) {
     const maxLength = 10;
     const maxWidth = 10;
+    
+    const [state, setState] = useState({width: width, length:length})
     if(!open){
         return null
     }
@@ -16,11 +19,20 @@ export default function Modal({open, onClose, width, setWidth, length, setLength
         widthList.push(i);
     }
 
-    const changeLength = (e) => {
-        setLength(e.target.value);
+    const handleChange = (e) => {
+        const name = e.target.name;
+        const value = e.target.value;
+
+        console.log("handleChange", name , value)
+        state[name] = value;
+        setState({...state})
+        console.log("state", state)
     }
-    const changeWidth = (e) =>{
-        setWidth(e.target.value);
+    
+    const handleSubmit = ()=> {
+        console.log("handleSubmit");
+        onClose();
+        configGrid(state.length, state.width);
     }
 
     return ReactDom.createPortal(
@@ -29,14 +41,14 @@ export default function Modal({open, onClose, width, setWidth, length, setLength
                 <div className="modal">
                 <form action="">
                     <label for="length">Length:</label>
-                        <select value={length} onChange={changeLength}>
+                        <select name="length" value={state.length} onChange={handleChange}>
                             {lengthList.map((d,index) => (
                                 <option value={d}>{d}</option>
                             ))}
                         </select> <br />
 
                     <label for="width">Width:  </label>
-                        <select value={width} onChange={changeWidth}>
+                        <select name="width" value={state.width} onChange={handleChange}>
                             {widthList.map((d) => (
                                 <option value={d}>{d}</option>
                             ))}
@@ -49,7 +61,7 @@ export default function Modal({open, onClose, width, setWidth, length, setLength
                         </select> <br />
                         
                 </form>    
-                <button onClick={onClose} type="submit">Submit</button>
+                <button onClick={handleSubmit} type="submit">Submit</button>
 
                 </div>
         
