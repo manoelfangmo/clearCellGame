@@ -2,7 +2,7 @@ import React from 'react'
 import "./modal.scss"
 import ReactDom from 'react-dom'
 import {useState} from "react"
-export default function Modal({open, onClose, width, length, configGrid}) {
+export default function Modal({open, onClose, width, length, configGrid, configSpeed}) {
     const maxLength = 10;
     const maxWidth = 10;
     
@@ -33,6 +33,18 @@ export default function Modal({open, onClose, width, length, configGrid}) {
         onClose();
         configGrid(state.length, state.width);
     }
+    const handleSpeedChange = (e) => {
+        const name = e.target.value;
+
+        if (name === "Hard"){
+            configSpeed(500)
+        }else if (name === "Medium"){
+            configSpeed(750)
+        }else{
+            configSpeed(1000)
+        }
+
+    }
 
     return ReactDom.createPortal(
         <>
@@ -55,8 +67,10 @@ export default function Modal({open, onClose, width, length, configGrid}) {
                         </select> <br />
 
                     <label htmlFor="speed">Speed:  </label>
-                        <select name="length">
-
+                        <select name="length" value="Easy" onChange={handleSpeedChange}>
+                                <option value="Easy">Easy</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Hard">Hard</option>
                         </select> <br />
                         
                 </form>    

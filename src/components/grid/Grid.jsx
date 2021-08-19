@@ -3,6 +3,7 @@ import "./grid.scss"
 import {useState, useEffect} from "react"
 import Modal from "../modal/Modal"
 import ScoreBoard from '../scoreBoard/ScoreBoard'
+import GameOver from '../gameOver/GameOver'
 
 
 
@@ -16,11 +17,16 @@ export default function Grid() {
     const [width, setWidth] = useState(5);
     const [score, setScore] = useState(0);
     const [coordinates, setCoordinates] = useState({row:0,col:0,clicked:false})
+    const [gameOver, setGameOver] = useState(false)
+    const [speed, setSpeed] = useState(1000)
 
     const configGrid = (newLength, newWidth) => {
         setLength(Number(newLength));
         setWidth(Number(newWidth));
         
+    }
+    const configSpeed = (newSpeed) => {
+        setSpeed(Number(newSpeed));
     }
     
     function createMap(columnCount, rowCount) {
@@ -83,6 +89,7 @@ export default function Grid() {
         const lastRow = length-1;
         for(let i = 0; i< width; i++){      
             if(grid[lastRow][i].style.backgroundColor !== "white"){
+                setGameOver(true)
                 gameOver = true;
                 break;
                 
@@ -91,14 +98,15 @@ export default function Grid() {
         return gameOver;
     }
 
-    useEffect(() => {
 
+    useEffect(() => {
+    
         if(startGame && isGameOver() === false){
             const intervalId = setInterval(() => {
                 nextAnimationStep();
                 
         
-            }, 1000);
+            }, speed);
                 return () => {clearInterval(intervalId); 
            }
         }
@@ -265,8 +273,9 @@ export default function Grid() {
             <button onClick={()=> setIsOpen(true)} className="settings">Game Settings</button>
             <button onClick={()=> setStartGame(true)}className="start">Start Game</button>
             <Modal open={isOpen} onClose={()=> setIsOpen(false)} length={length} 
-             width={width} configGrid={configGrid}  />
+             width={width} configGrid={configGrid} configSpeed={configSpeed} />
             <ScoreBoard score={score} />
+            <GameOver gameOver={gameOver} />
         </>
             
 

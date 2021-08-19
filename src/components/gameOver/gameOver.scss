@@ -1,4 +1,4 @@
-.overlay{
+.overlay1{
     position: fixed;
     top: 0;
     left: 0;
@@ -9,33 +9,25 @@
 
    
 }
-.modal{
+.modal1{
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-color: red;
+    background-color: yellow;
     padding: 50px;
     z-index: 1000;
     border-radius: 20px;
+
+    .button{
+        cursor: pointer;
+        height: 60px;
+        font-size: 50px;
+        background-color: red;
+        overflow: hidden;
+        border-radius: 10px;
+
+    }
      
     
 }
-
-input{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    font-size: 30px;
-    height: 30px;
-
-}
-label{
-    margin-top: 10px;
-    margin-bottom: 10px;
-    justify-content: center;
-    font-size: 30px;
-}
-
-
-

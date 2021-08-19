@@ -19,17 +19,18 @@
 }
 .settings{
     cursor: pointer;
-    height: 40px;
+    height: 45px;
     color: black;
     font-size: 35px;
     background-color: red;
     overflow: hidden;
+    border-radius: 10px;
     
   }
 
   .start{
     cursor: pointer;
-    height: 40px;
+    height: 45px;
     color: black;
     font-size: 35px;
     background-color: green;
@@ -37,4 +38,5 @@
     position: absolute;
     right: 0;
     top: 0;
+    border-radius: 10px;
   }
