@@ -74,7 +74,7 @@ export default function Modal({open, onClose, width, length, configGrid, configS
                         </select> <br />
                         
                 </form>    
-                <button onClick={handleSubmit} type="submit">Submit</button>
+                <button className="submit" onClick={handleSubmit} type="submit">Submit</button>
 
                 </div>
         

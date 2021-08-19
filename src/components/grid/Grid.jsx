@@ -271,7 +271,7 @@ export default function Grid() {
 
             </div>
             <button onClick={()=> setIsOpen(true)} className="settings">Game Settings</button>
-            <button onClick={()=> setStartGame(true)}className="start">Start Game</button>
+            <button onClick={()=> setStartGame(true)} className="start">Start Game</button>
             <Modal open={isOpen} onClose={()=> setIsOpen(false)} length={length} 
              width={width} configGrid={configGrid} configSpeed={configSpeed} />
             <ScoreBoard score={score} />

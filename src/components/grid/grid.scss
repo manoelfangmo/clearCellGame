@@ -1,3 +1,4 @@
+@import "../../global.scss";
 .grid{
         
         display: grid;
@@ -25,6 +26,18 @@
     background-color: red;
     overflow: hidden;
     border-radius: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    @include mobile{
+      left: 45px;
+      transform: rotate(90deg);
+      transform-origin: top left
+      
+      
+    }
+    
     
   }
 
@@ -39,4 +52,10 @@
     right: 0;
     top: 0;
     border-radius: 10px;
+      @include mobile{
+          right: 45px;
+          transform: rotate(-90deg);
+          transform-origin: top right;
+        
+      }
   }
