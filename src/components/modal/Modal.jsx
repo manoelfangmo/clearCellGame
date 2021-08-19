@@ -23,14 +23,13 @@ export default function Modal({open, onClose, width, length, configGrid}) {
         const name = e.target.name;
         const value = e.target.value;
 
-        console.log("handleChange", name , value)
+       
         state[name] = value;
         setState({...state})
         console.log("state", state)
     }
     
     const handleSubmit = ()=> {
-        console.log("handleSubmit");
         onClose();
         configGrid(state.length, state.width);
     }
@@ -40,14 +39,14 @@ export default function Modal({open, onClose, width, length, configGrid}) {
                 <div className="overlay"></div>
                 <div className="modal">
                 <form action="">
-                    <label for="length">Length:</label>
+                    <label htmlFor="length">Length:</label>
                         <select name="length" value={state.length} onChange={handleChange}>
                             {lengthList.map((d,index) => (
                                 <option value={d}>{d}</option>
                             ))}
                         </select> <br />
 
-                    <label for="width">Width:  </label>
+                    <label htmlFor="width">Width:  </label>
                         <select name="width" value={state.width} onChange={handleChange}>
                             {widthList.map((d) => (
                                 <option value={d}>{d}</option>
@@ -55,7 +54,7 @@ export default function Modal({open, onClose, width, length, configGrid}) {
 
                         </select> <br />
 
-                    <label for="speed">Speed:  </label>
+                    <label htmlFor="speed">Speed:  </label>
                         <select name="length">
 
                         </select> <br />
