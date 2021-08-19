@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/clearCellGame/static/css/main.61050b9e.chunk.css",
-    "main.js": "/clearCellGame/static/js/main.680da54e.chunk.js",
-    "main.js.map": "/clearCellGame/static/js/main.680da54e.chunk.js.map",
+    "main.css": "/clearCellGame/static/css/main.b1186508.chunk.css",
+    "main.js": "/clearCellGame/static/js/main.c535542a.chunk.js",
+    "main.js.map": "/clearCellGame/static/js/main.c535542a.chunk.js.map",
     "runtime-main.js": "/clearCellGame/static/js/runtime-main.005fb52c.js",
     "runtime-main.js.map": "/clearCellGame/static/js/runtime-main.005fb52c.js.map",
-    "static/js/2.7d90cb87.chunk.js": "/clearCellGame/static/js/2.7d90cb87.chunk.js",
-    "static/js/2.7d90cb87.chunk.js.map": "/clearCellGame/static/js/2.7d90cb87.chunk.js.map",
+    "static/js/2.d1c73dbf.chunk.js": "/clearCellGame/static/js/2.d1c73dbf.chunk.js",
+    "static/js/2.d1c73dbf.chunk.js.map": "/clearCellGame/static/js/2.d1c73dbf.chunk.js.map",
     "index.html": "/clearCellGame/index.html",
-    "static/css/main.61050b9e.chunk.css.map": "/clearCellGame/static/css/main.61050b9e.chunk.css.map",
-    "static/js/2.7d90cb87.chunk.js.LICENSE.txt": "/clearCellGame/static/js/2.7d90cb87.chunk.js.LICENSE.txt"
+    "static/css/main.b1186508.chunk.css.map": "/clearCellGame/static/css/main.b1186508.chunk.css.map",
+    "static/js/2.d1c73dbf.chunk.js.LICENSE.txt": "/clearCellGame/static/js/2.d1c73dbf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.005fb52c.js",
-    "static/js/2.7d90cb87.chunk.js",
-    "static/css/main.61050b9e.chunk.css",
-    "static/js/main.680da54e.chunk.js"
+    "static/js/2.d1c73dbf.chunk.js",
+    "static/css/main.b1186508.chunk.css",
+    "static/js/main.c535542a.chunk.js"
   ]
 }
